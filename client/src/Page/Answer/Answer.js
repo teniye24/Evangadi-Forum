@@ -14,7 +14,7 @@ function Answer(props) {
   // questionId = parseInt(questionId?.slice(1, 2));
   const [userData, setUserData] = useContext(UserContext);
   // console.log(userData);
-  const [answer, setAnswer] = useState({});
+  const [answer, setAnswer] = useState([]);
   const [prevAnswers, setPrevAnswers] = useState([]);
 
   // get access to the data on state
@@ -60,7 +60,7 @@ function Answer(props) {
     // setAskedQuestion(question);
     const fetchAnswers = async () => {
       const answers = await axios.get(
-        `http://localhost:4001/api/answer`
+        `http://localhost:4001/api/answer/`
       );
       console.log(answers.data);
       console.log(answers.data.data);
@@ -99,9 +99,9 @@ function Answer(props) {
         </div>
 
         <div className="answer__title">
-          {prevAnswers && prevAnswers.length !== 0 && (
+          {prevAnswers && prevAnswers.length !== 0 && 
             <h4>Answer From the others</h4>
-          )}
+          }
           {/* {prevAnswers?.length !== 0 && <h4>Answer From the others</h4>} */}
         </div>
         <div className="answer__list">
